@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
@@ -33,14 +34,24 @@ export default function LandingLayout({
 const Sidebar = () => {
   return (
     <header className="bg-slate-100 w-full py-4 flex justify-center">
-      <nav>This is the Sidebar</nav>
+      <nav>
+        This is the Sidebar -{" "}
+        <Link href="/auth/login">
+          <a className="underline">Click here to Login</a>
+        </Link>
+      </nav>
     </header>
   );
 };
 const Navbar = () => {
   return (
     <header className="bg-slate-100 w-full py-4 flex justify-center">
-      <nav>This is the Navbar</nav>
+      <nav>
+        This is the Navbar - {""}
+        <Link href="/auth/login">
+          <a className="underline">Click here to Login</a>
+        </Link>
+      </nav>
     </header>
   );
 };
