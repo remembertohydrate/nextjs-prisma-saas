@@ -5,8 +5,6 @@
 /.pnp
 .pnp.js
 
-/widget/node_modules
-/widget/dist
 
 
 # testing

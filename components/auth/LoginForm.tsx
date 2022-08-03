@@ -1,11 +1,25 @@
 import React from "react";
 import { VscGithub } from "react-icons/vsc";
 import Button from "../primitives/Button";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 function LoginForm() {
+  const { data: session } = useSession();
+
+  const handleGithub = async () => {
+    await signIn("github");
+  };
+
   return (
     <>
       <form className="w-64">
+        {/* this is temporary \/ */}
+        <div className="mb-12 text-center">
+          {session
+            ? `You are logged in as ${session.user?.email}`
+            : "You are not logged in"}
+        </div>
+        {/* this is temporary /\ */}
         <div className="mb-6">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
             Your email
@@ -34,9 +48,15 @@ function LoginForm() {
       <Button
         rightIcon={<VscGithub />}
         className={"text-white bg-neutral-700 hover:bg-neutral-800"}
+        onClick={() => handleGithub()}
       >
         Sign In with GitHub
       </Button>
+      {/* this is temporary \/ */}
+      <button className="mt-6" onClick={() => signOut()}>
+        Click to Logout
+      </button>
+      {/* this is temporary /\ */}
     </>
   );
 }
